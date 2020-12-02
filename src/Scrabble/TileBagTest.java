@@ -10,7 +10,7 @@ public class TileBagTest {
     void newBag(){
         TileBag tileBag = new TileBag();
         tileBag.newBag();
-        Assertions.assertEquals(100, tileBag.bagSize());
+        Assertions.assertEquals(100, tileBag.size());
     }
 
     @Test
@@ -27,9 +27,9 @@ public class TileBagTest {
     void drawTile() {
         TileBag tileBag = new TileBag();
         tileBag.newBag();
-        int original = tileBag.bagSize();
+        int original = tileBag.size();
         tileBag.drawTile();
-        Assertions.assertEquals(original - 1, tileBag.bagSize());
+        Assertions.assertEquals(original - 1, tileBag.size());
     }
 
 

@@ -1,7 +1,6 @@
 package Scrabble.Logic;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -9,6 +8,7 @@ public class TileBag {
     private List<Tiles> bag = new ArrayList<>();
 
     public TileBag() {
+        newBag();
     }
 
     public void newBag(){
@@ -66,7 +66,7 @@ public class TileBag {
         return tile;
     }
 
-    public int bagSize(){
+    public int size(){
         return this.bag.size();
     }
 }

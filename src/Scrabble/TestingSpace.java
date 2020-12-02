@@ -8,8 +8,8 @@ public class TestingSpace {
         tileBag.newBag();
         tileBag.shuffleBag();
 
-        System.out.println(tileBag.bagSize());
+        System.out.println(tileBag.size());
         System.out.println(tileBag.drawTile());
-        System.out.println(tileBag.bagSize());
+        System.out.println(tileBag.size());
     }
 }
