@@ -1,26 +1,25 @@
-package Scrabble.Logic.Player;
+package Scrabble.Logic.GameObjects;
 
-import Scrabble.Logic.Tiles;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Hand {
     private static final int MAX_HAND_SIZE = 7;
-    private List<Tiles> hand;
+    private List<Tiles> hand = new ArrayList<>();
 
     public Hand() {
 
     }
 
-    public void addTile(Tiles tile){
+    public void addTile(Tiles tile) {
         // check size of hand, if hand < 7, allow add
         if(this.hand.size() >= MAX_HAND_SIZE){
-           this.hand.add(takeOneTileFromBag());
+           this.hand.add(tile);
         }
-
     }
 
     public void removeTile(Tiles tile){
-
+        hand.remove(tile);
     }
 
     public List<Tiles> getHand() {
@@ -31,7 +30,10 @@ public class Hand {
         this.hand = hand;
     }
 
-    public Tiles takeOneTileFromBag(){
-        return null;
+    @Override
+    public String toString() {
+        return "Hand{" +
+                "hand=" + hand +
+                '}';
     }
 }

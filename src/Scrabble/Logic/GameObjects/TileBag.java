@@ -1,4 +1,4 @@
-package Scrabble.Logic;
+package Scrabble.Logic.GameObjects;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,7 +29,7 @@ public class TileBag {
         this.bag.addAll(Collections.nCopies(2, Tiles.H));
         this.bag.addAll(Collections.nCopies(9, Tiles.I));
         this.bag.addAll(Collections.nCopies(1, Tiles.J));
-        this.bag.addAll(Collections.nCopies(1, Tiles.J));
+        this.bag.addAll(Collections.nCopies(1, Tiles.K));
         this.bag.addAll(Collections.nCopies(4, Tiles.L));
         this.bag.addAll(Collections.nCopies(2, Tiles.M));
         this.bag.addAll(Collections.nCopies(6, Tiles.N));
@@ -68,5 +68,12 @@ public class TileBag {
 
     public int size(){
         return this.bag.size();
+    }
+
+    @Override
+    public String toString() {
+        return "TileBag{" +
+                "bag=" + bag +
+                '}';
     }
 }

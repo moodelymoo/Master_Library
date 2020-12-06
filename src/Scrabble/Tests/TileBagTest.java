@@ -1,4 +1,4 @@
-import Scrabble.Logic.TileBag;
+import Scrabble.Logic.GameObjects.TileBag;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

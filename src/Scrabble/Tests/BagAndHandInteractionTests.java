@@ -1,26 +1,21 @@
-import Scrabble.Logic.Player.Hand;
-import Scrabble.Logic.TileBag;
-import jdk.jfr.Description;
-import org.junit.jupiter.api.BeforeAll;
+import Scrabble.Logic.GameObjects.Hand;
+import Scrabble.Logic.GameObjects.TileBag;
+import Scrabble.Logic.GameObjects.Tiles;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
 
 public class BagAndHandInteractionTests {
 
-
-    @BeforeAll
-    static void setup(){
-        TileBag tileBag = new TileBag();
-        tileBag.newBag();
-        Hand hand = new Hand();
-
-    }
-
+    Hand hand = new Hand();
+    TileBag tileBag = new TileBag();
 
     @Test
-    @Description("add one tile from the bag to the hand, making sure that the bag removes the " +
-            "correct tile and the hand gains the correct tile")
     void addOneTileFromBagToHand(){
-
+            hand.addTile(Tiles.A);
+            System.out.println(hand.toString());
+            Hand tmp = hand;
+            hand.addTile(tileBag.drawTile());
+            Assertions.assertEquals(tmp, hand);
     }
 
 }
