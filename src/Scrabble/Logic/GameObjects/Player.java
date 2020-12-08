@@ -2,6 +2,7 @@ package Scrabble.Logic.GameObjects;
 
 public class Player {
     private int PLAYER_NUMBER;
+    private Hand hand;
 
     public Player(int pNum) {
         this.PLAYER_NUMBER = pNum;
