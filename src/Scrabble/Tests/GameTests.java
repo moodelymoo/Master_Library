@@ -1,16 +1,20 @@
+import Scrabble.Dictionary.DictionaryController;
+import Scrabble.Logic.GameObjects.Exceptions.EmptyFileException;
 import Scrabble.Logic.GameObjects.Hand;
 import Scrabble.Logic.GameObjects.TileBag;
 import Scrabble.Logic.GameObjects.Tiles;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
-import org.junit.platform.engine.support.hierarchical.ThrowableCollector;
+
+import java.io.IOException;
 
 
 public class GameTests {
 
+
     @BeforeEach
-    void setup(){
+    void setup() {
 
     }
 
@@ -62,7 +66,39 @@ public class GameTests {
 
     @Test
     void testFifthWordInDictionary() {
-        Assertions.fail();
+        DictionaryController dictionaryController =
+                new DictionaryController("src/Scrabble/Dictionary/Dictionary.txt");
+        try {
+            dictionaryController.importDictionary();
+        } catch (IOException | EmptyFileException | NullPointerException e) {
+            e.printStackTrace();
+        }
+
+        for (int i = 0; i < 4; i++) {
+            System.out.println(dictionaryController.getDictionary().get(i));
+        }
+        //        Assertions.fail();
         // AAHS is fifth word
     }
+
+    @Test
+    void emptyDictionaryFileExceptionTest() {
+        Assertions.fail();
+    }
+
+    @Test
+    void noPathSetForDictionaryFileExceptionTest() {
+        Assertions.fail();
+    }
+
+    @Test
+    void badPathSetForDictionaryFileExceptionTest() {
+        Assertions.fail();
+    }
+
+    @Test
+    void dictionaryTypeSanitizationTest() {
+        Assertions.fail();
+    }
+
 }

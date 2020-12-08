@@ -10,28 +10,29 @@ import java.util.List;
 
 public class BagAndHandInteractionTests {
 
+
     Hand hand = new Hand();
     TileBag tileBag = new TileBag();
 
     @BeforeEach
-    void resetObjects(){
+    void resetObjects() {
         this.hand = new Hand();
         this.tileBag = new TileBag();
     }
 
     @Test
-    void addOneTileFromBagToEmptyHand(){
-            hand.addTile(Tiles.A);
-            Hand tmp = hand;
-            TileBag tmpBag = tileBag;
-            tmpBag.drawTile();
-            hand.addTile(tileBag.drawTile());
-            Assertions.assertEquals(tmp, hand);
-            Assertions.assertEquals(tmpBag, tileBag);
+    void addOneTileFromBagToEmptyHand() {
+        hand.addTile(Tiles.A);
+        Hand tmp = hand;
+        TileBag tmpBag = tileBag;
+        tmpBag.drawTile();
+        hand.addTile(tileBag.drawTile());
+        Assertions.assertEquals(tmp, hand);
+        Assertions.assertEquals(tmpBag, tileBag);
     }
 
     @Test
-    void addOneTileFromBagToFullHand(){
+    void addOneTileFromBagToFullHand() {
         List<Tiles> list;
         list = new ArrayList<>();
         for (int i = 0; i < 7; i++) {
@@ -43,7 +44,7 @@ public class BagAndHandInteractionTests {
     }
 
     @Test
-    void addOneTileFromBagToHandWithSixTiles(){
+    void addOneTileFromBagToHandWithSixTiles() {
         List<Tiles> list;
         list = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
@@ -52,7 +53,5 @@ public class BagAndHandInteractionTests {
         this.hand.setHand(list);
         Assertions.assertDoesNotThrow(() -> hand.addTile(Tiles.A));
     }
-
-
 
 }

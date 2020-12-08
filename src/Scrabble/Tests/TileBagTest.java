@@ -4,8 +4,9 @@ import org.junit.jupiter.api.Test;
 
 public class TileBagTest {
 
+
     @Test
-    void testNewBag(){
+    void testNewBag() {
         TileBag tileBag = new TileBag();
         tileBag.newBag();
         Assertions.assertEquals(100, tileBag.size());

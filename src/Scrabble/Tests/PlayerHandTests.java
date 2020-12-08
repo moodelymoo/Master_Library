@@ -1,31 +1,38 @@
-import jdk.jfr.Description;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class PlayerHandTests {
-    @Test
-    @Description("Add one tile to an empty hand")
-    void testAddTile() {
 
+
+    @BeforeEach
+    void setup() {
+
+    }
+
+    @Test
+    void testAddTile() {
+        Assertions.fail();
     }
 
     @Test
     void testRemoveTile() {
-
+        Assertions.fail();
     }
 
     @Test
-    @Description("")
     void testGetHand() {
-
+        Assertions.fail();
     }
 
     @Test
     void testHandSetup() {
-
+        Assertions.fail();
     }
 
     @Test
     void testHandSizeLimit() {
-
+        Assertions.fail();
     }
+
 }
