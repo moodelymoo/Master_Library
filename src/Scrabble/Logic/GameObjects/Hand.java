@@ -11,16 +11,16 @@ public class Hand {
 
     }
 
-    public void addTile(Tiles tile) throws IndexOutOfBoundsException{
+    public void addTile(Tiles tile) throws IndexOutOfBoundsException {
         // check size of hand, if hand < 7, allow add
         if (this.hand.size() < MAX_HAND_SIZE) {
-           this.hand.add(tile);
+            this.hand.add(tile);
         } else {
-           throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException();
         }
     }
 
-    public void removeTile(Tiles tile){
+    public void removeTile(Tiles tile) {
         hand.remove(tile);
     }
 

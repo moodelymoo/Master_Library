@@ -4,6 +4,7 @@ import Scrabble.Logic.GameObjects.Tiles;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,5 +54,4 @@ public class BagAndHandInteractionTests {
         this.hand.setHand(list);
         Assertions.assertDoesNotThrow(() -> hand.addTile(Tiles.A));
     }
-
 }

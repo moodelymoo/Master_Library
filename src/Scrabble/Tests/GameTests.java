@@ -1,4 +1,5 @@
 import Scrabble.Dictionary.DictionaryController;
+import Scrabble.Logic.GameObjects.Board;
 import Scrabble.Logic.GameObjects.Exceptions.EmptyFileException;
 import Scrabble.Logic.GameObjects.Hand;
 import Scrabble.Logic.GameObjects.TileBag;
@@ -7,15 +8,30 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
+import java.awt.event.HierarchyBoundsAdapter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.stream.StreamSupport;
 
 
 public class GameTests {
 
+    DictionaryController newDefaultDictionary(){
+        DictionaryController dictionaryController =
+                new DictionaryController("src/Scrabble/Dictionary/Dictionary.txt");
+        try {
+            dictionaryController.importDictionary();
+        } catch (IOException | EmptyFileException | NullPointerException e) {
+            e.printStackTrace();
+        }
+        return dictionaryController;
+    }
+
+    DictionaryController dictionaryController;
 
     @BeforeEach
     void setup() {
-
+       this.dictionaryController = newDefaultDictionary();
     }
 
     @Test
@@ -34,13 +50,20 @@ public class GameTests {
     }
 
     @Test
+    void boardOutTest() {
+        Board board = new Board();
+        System.out.println(board.toString());
+    }
+
+    @Test
     void scoreMultiplierBoardLayoutTest() {
         Assertions.fail();
     }
 
     @Test
     void numberOfTilesInBagIs100Test() {
-        Assertions.fail();
+        TileBag tileBag = new TileBag();
+        Assertions.assertEquals(100, tileBag.size());
     }
 
     @Test
@@ -59,26 +82,14 @@ public class GameTests {
     }
 
     @Test
-    void testFirstWordInDictionary() {
-        Assertions.fail();
+    void testFirstWordInDictionaryExists() {
+        Assertions.assertEquals("AA", dictionaryController.getDictionary().get(0));
         // first word should be AA
     }
 
     @Test
-    void testFifthWordInDictionary() {
-        DictionaryController dictionaryController =
-                new DictionaryController("src/Scrabble/Dictionary/Dictionary.txt");
-        try {
-            dictionaryController.importDictionary();
-        } catch (IOException | EmptyFileException | NullPointerException e) {
-            e.printStackTrace();
-        }
-
-        for (int i = 0; i < 4; i++) {
-            System.out.println(dictionaryController.getDictionary().get(i));
-        }
-        //        Assertions.fail();
-        // AAHS is fifth word
+    void testFifthWordInDictionaryExists() {
+        Assertions.assertEquals("AAHS", dictionaryController.getDictionary().get(4));
     }
 
     @Test
@@ -100,5 +111,4 @@ public class GameTests {
     void dictionaryTypeSanitizationTest() {
         Assertions.fail();
     }
-
 }

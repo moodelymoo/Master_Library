@@ -5,7 +5,6 @@ import Scrabble.Logic.GameObjects.Exceptions.EmptyFileException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -18,6 +17,7 @@ public class DictionaryController {
     private static final int headerLines = 3;
 
     public DictionaryController() {
+
     }
 
     public DictionaryController(String path) {
@@ -25,10 +25,9 @@ public class DictionaryController {
     }
 
     public void importDictionary() throws IOException, EmptyFileException, NullPointerException {
-        if (path == null){
+        if (path == null) {
             throw new NullPointerException("File path not set");
-        }
-        else{
+        } else {
             // path should be from repo/content root
             new File(String.valueOf(getPath()));
             try (Stream<String> stream = Files.lines(path)) {

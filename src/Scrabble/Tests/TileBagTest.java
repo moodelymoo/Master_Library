@@ -30,5 +30,4 @@ public class TileBagTest {
         tileBag.drawTile();
         Assertions.assertEquals(original - 1, tileBag.size());
     }
-
 }
