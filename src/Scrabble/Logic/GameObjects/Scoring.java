@@ -12,7 +12,7 @@ public class Scoring {
     //TODO add appropriate scoring to each tile
     //TODO add score multiplier from DW & TL and so on
 
-    private Board board = new Board();
+    private final Board board = new Board();
 
     public Scoring() {
     }
@@ -60,9 +60,9 @@ public class Scoring {
 
     private boolean isWordDirectionalityValid(List<Tiles> tiles, List<Integer> xCoord, List<Integer> yCoord){
         boolean valid = false;
-        int x1 = 0;
+        int x1;
         int x2 = 0;
-        int y1 = 0;
+        int y1;
         int y2 = 0;
 
         for (int i = 0; i < tiles.size(); i++){

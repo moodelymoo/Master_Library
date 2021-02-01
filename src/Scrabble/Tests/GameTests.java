@@ -98,7 +98,7 @@ public class GameTests {
     }
 
     @Test
-    void incorrectDictionaryFileHeaderFormatTest() throws IOException, EmptyFileException {
+    void incorrectDictionaryFileHeaderFormatTest() {
         System.out.println("tests if the dictionary file has the correct header formatting or is empty");
         DictionaryController dictionaryController = new DictionaryController(
                 "src/Scrabble/Tests/TestResources/EmptyDictionary.txt");
