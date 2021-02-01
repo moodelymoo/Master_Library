@@ -125,4 +125,8 @@ public class Board {
         this.out = out;
     }
 
+    public int[] getBoardDims(){
+        return new int[]{boardContents.length, boardContents[0].length};
+    }
+
 }

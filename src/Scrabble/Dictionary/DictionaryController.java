@@ -34,7 +34,12 @@ public class DictionaryController {
                 stream.forEach(this.dictionary::add);
             }
             // trim header fo the file
-            dictionary.subList(0, headerLines).clear();
+            if (dictionary.size() < headerLines) {
+                throw new EmptyFileException("file is not large enough to have header, please check file formatting");
+            }
+            else{
+                dictionary.subList(0, headerLines).clear();
+            }
         }
     }
 

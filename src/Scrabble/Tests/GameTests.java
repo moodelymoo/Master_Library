@@ -1,17 +1,15 @@
 import Scrabble.Dictionary.DictionaryController;
 import Scrabble.Logic.GameObjects.Board;
 import Scrabble.Logic.GameObjects.Exceptions.EmptyFileException;
-import Scrabble.Logic.GameObjects.Hand;
+import Scrabble.Logic.GameObjects.Exceptions.WordNotFoundException;
 import Scrabble.Logic.GameObjects.TileBag;
-import Scrabble.Logic.GameObjects.Tiles;
+import Scrabble.Logic.WordChecker;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions;
-
-import java.awt.event.HierarchyBoundsAdapter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.stream.StreamSupport;
+import java.nio.file.NoSuchFileException;
+import java.util.Arrays;
 
 
 public class GameTests {
@@ -46,7 +44,10 @@ public class GameTests {
 
     @Test
     void boardDimTest() {
-        Assertions.fail();
+        Board board = new Board();
+        System.out.println("Expecting 15 x 15 board, fails if not those dims");
+        // TODO add custom board size support in testing
+        Assertions.assertEquals("[15, 15]", Arrays.toString(board.getBoardDims()));
     }
 
     @Test
@@ -72,13 +73,17 @@ public class GameTests {
     }
 
     @Test
-    void checkWordAgainstDictionaryPassTest() {
-        Assertions.fail();
+    void checkWordAgainstDictionaryPassTest() throws WordNotFoundException {
+        WordChecker wordChecker = new WordChecker();
+        Assertions.assertTrue(wordChecker.check(dictionaryController.getDictionary(), "banana"));
     }
 
     @Test
     void checkWordAgainstDictionaryFailTest() {
-        Assertions.fail();
+        WordChecker wordChecker = new WordChecker();
+        System.out.println("testing word that is not in the dictionary throws word not found error");
+        Assertions.assertThrows(WordNotFoundException.class,
+                () -> wordChecker.check(dictionaryController.getDictionary(), "kjhbasdlhiujfsdalihjf"));
     }
 
     @Test
@@ -93,22 +98,24 @@ public class GameTests {
     }
 
     @Test
-    void emptyDictionaryFileExceptionTest() {
-        Assertions.fail();
+    void incorrectDictionaryFileHeaderFormatTest() throws IOException, EmptyFileException {
+        System.out.println("tests if the dictionary file has the correct header formatting or is empty");
+        DictionaryController dictionaryController = new DictionaryController(
+                "src/Scrabble/Tests/TestResources/EmptyDictionary.txt");
+        Assertions.assertThrows(EmptyFileException.class, dictionaryController::importDictionary);
     }
 
     @Test
     void noPathSetForDictionaryFileExceptionTest() {
-        Assertions.fail();
-    }
-
-    @Test
-    void badPathSetForDictionaryFileExceptionTest() {
-        Assertions.fail();
+        DictionaryController dictionaryController = new DictionaryController("null");
+        System.out.println("check if exception thrown when a bad path is given");
+        Assertions.assertThrows(NoSuchFileException.class, dictionaryController::importDictionary);
     }
 
     @Test
     void dictionaryTypeSanitizationTest() {
+        System.out.println("make sure that the dictionary file is single words separated by a newline");
+        //TODO imp, not super needed as of right now
         Assertions.fail();
     }
 }
