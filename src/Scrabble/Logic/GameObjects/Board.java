@@ -74,6 +74,10 @@ public class Board {
         return boardContents[x][y];
     }
 
+    public String getBOARDAtCoordinates(int x, int y) {
+        return BOARD[x][y];
+    }
+
     public void setBoardAtCoordinates(int x, int y, char data) {
         boardContents[x][y] = data;
     }
