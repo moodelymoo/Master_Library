@@ -25,7 +25,7 @@ public class GameTests {
         return dictionaryController;
     }
 
-    DictionaryController dictionaryController;
+    private DictionaryController dictionaryController;
 
     @BeforeEach
     void setup() {
@@ -34,12 +34,14 @@ public class GameTests {
 
     @Test
     void changeTurnTest() {
-        Assertions.fail();
+        //TODO imp, should make sure that at the end of the turn, hand is topped up to hand size, score is calculated
+        // and the edit permissions for the board are able to be changed
     }
 
     @Test
     void newGameSetupTest() {
-        Assertions.fail();
+        //TODO imp, should check that players hands, the board and the bag are all set up correctly from the
+        // default values
     }
 
     @Test
@@ -58,7 +60,8 @@ public class GameTests {
 
     @Test
     void scoreMultiplierBoardLayoutTest() {
-        Assertions.fail();
+        //TODO imp testing of this, needs to have the word checking, the score calculations and the score tile
+        // multiplier working to work
     }
 
     @Test
@@ -69,7 +72,7 @@ public class GameTests {
 
     @Test
     void autoRefillHandOnChangeTurnTest() {
-        Assertions.fail();
+        //TODO imp, make sure the hand is topped up to the hand max at the end of the turn
     }
 
     @Test
@@ -116,6 +119,5 @@ public class GameTests {
     void dictionaryTypeSanitizationTest() {
         System.out.println("make sure that the dictionary file is single words separated by a newline");
         //TODO imp, not super needed as of right now
-        Assertions.fail();
     }
 }
