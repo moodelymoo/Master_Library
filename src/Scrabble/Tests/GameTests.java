@@ -77,6 +77,7 @@ public class GameTests {
 
     @Test
     void checkWordAgainstDictionaryPassTest() throws WordNotFoundException {
+        //TODO make this test against a list of words that are in the dictionary
         WordChecker wordChecker = new WordChecker();
         Assertions.assertTrue(wordChecker.check(dictionaryController.getDictionary(), "banana"));
     }
@@ -120,4 +121,12 @@ public class GameTests {
         System.out.println("make sure that the dictionary file is single words separated by a newline");
         //TODO imp, not super needed as of right now
     }
+
+    @Test
+    void playTurn() {
+        //TODO imp, should check that a non challenge round of scrabble has the logic working correctly,
+        // needs to make sure that the primary player changes turn at the end along with the hand refill and the
+        // board updating the tile char version of the board
+    }
+
 }

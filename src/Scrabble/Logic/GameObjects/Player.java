@@ -1,24 +1,28 @@
 package Scrabble.Logic.GameObjects;
 
 public class Player {
-    private int PLAYER_NUMBER;
+    private final String name;
     private Hand hand;
     private int score;
 
-    public Player(int pNum) {
-        this.PLAYER_NUMBER = pNum;
+    public Player(String name) {
+        this.name = name;
         this.score = 0;
-    }
-
-    public int getPLAYER_NUMBER() {
-        return PLAYER_NUMBER;
-    }
-
-    public void setPLAYER_NUMBER(int PLAYER_NUMBER) {
-        this.PLAYER_NUMBER = PLAYER_NUMBER;
     }
 
     public void addToScore(int score){
         this.score = this.score + score;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public String getName() {
+        return name;
     }
 }

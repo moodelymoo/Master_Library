@@ -4,20 +4,17 @@ import Scrabble.Dictionary.DictionaryController;
 import Scrabble.Logic.GameObjects.Exceptions.EmptyFileException;
 import Scrabble.Logic.GameObjects.Exceptions.WordNotFoundException;
 import Scrabble.Logic.WordChecker;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.List;
 
 public class Scoring {
-    //TODO add appropriate scoring to each tile
-    //TODO add score multiplier from DW & TL and so on
 
     private final Board board = new Board();
 
     public Scoring() {
     }
-
-
 
     public int calculateScore(List<Tiles> tiles, List<Integer> xCoord, List<Integer> yCoord) throws EmptyFileException, IOException, WordNotFoundException {
         // check tiles + modifiers
@@ -58,7 +55,7 @@ public class Scoring {
         return score;
     }
 
-    private boolean isWordDirectionalityValid(List<Tiles> tiles, List<Integer> xCoord, List<Integer> yCoord){
+    private boolean isWordDirectionalityValid(@NotNull List<Tiles> tiles, List<Integer> xCoord, List<Integer> yCoord){
         boolean valid = false;
         int x1;
         int x2 = 0;
