@@ -1,6 +1,6 @@
 import Scrabble.Dictionary.DictionaryController;
 import Scrabble.Logic.GameObjects.Board;
-import Scrabble.Logic.GameObjects.Exceptions.EmptyFileException;
+import Scrabble.Logic.GameObjects.Exceptions.InvalidFileFormatException;
 import Scrabble.Logic.GameObjects.Exceptions.WordNotFoundException;
 import Scrabble.Logic.GameObjects.TileBag;
 import Scrabble.Logic.WordChecker;
@@ -14,12 +14,12 @@ import java.util.Arrays;
 
 public class GameTests {
 
-    DictionaryController newDefaultDictionary(){
+    DictionaryController newDefaultDictionary() {
         DictionaryController dictionaryController =
                 new DictionaryController("src/Scrabble/Dictionary/Dictionary.txt");
         try {
             dictionaryController.importDictionary();
-        } catch (IOException | EmptyFileException | NullPointerException e) {
+        } catch (IOException | InvalidFileFormatException | NullPointerException e) {
             e.printStackTrace();
         }
         return dictionaryController;
@@ -29,7 +29,7 @@ public class GameTests {
 
     @BeforeEach
     void setup() {
-       this.dictionaryController = newDefaultDictionary();
+        this.dictionaryController = newDefaultDictionary();
     }
 
     @Test
@@ -106,7 +106,7 @@ public class GameTests {
         System.out.println("tests if the dictionary file has the correct header formatting or is empty");
         DictionaryController dictionaryController = new DictionaryController(
                 "src/Scrabble/Tests/TestResources/EmptyDictionary.txt");
-        Assertions.assertThrows(EmptyFileException.class, dictionaryController::importDictionary);
+        Assertions.assertThrows(InvalidFileFormatException.class, dictionaryController::importDictionary);
     }
 
     @Test

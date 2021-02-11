@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Player {
     private final String name;
-    private Hand hand;
+    private final Hand hand = new Hand();
     private int score;
 
     public Player(String name) {
@@ -31,8 +31,16 @@ public class Player {
         return name;
     }
 
-    public String getHand() {
-        return hand.getHand().toString();
+    public Hand getHand() {
+        return this.hand;
+    }
+
+    public TileBag fillHand(TileBag tileBag){
+        for (int i = 0; i < (getHand().getMaxHandSize()
+                - getHand().getHand().size()); i++){
+            getHand().addTile(tileBag.drawTile());
+        }
+        return tileBag;
     }
 
     public List<Tiles> play() {

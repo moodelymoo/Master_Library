@@ -1,7 +1,7 @@
 package Scrabble.Logic.GameObjects;
 
 import Scrabble.Dictionary.DictionaryController;
-import Scrabble.Logic.GameObjects.Exceptions.EmptyFileException;
+import Scrabble.Logic.GameObjects.Exceptions.InvalidFileFormatException;
 import Scrabble.Logic.GameObjects.Exceptions.WordNotFoundException;
 import Scrabble.Logic.WordChecker;
 import org.jetbrains.annotations.NotNull;
@@ -16,7 +16,7 @@ public class Scoring {
     public Scoring() {
     }
 
-    public int calculateScore(List<Tiles> tiles, List<Integer> xCoord, List<Integer> yCoord) throws EmptyFileException, IOException, WordNotFoundException {
+    public int calculateScore(List<Tiles> tiles, List<Integer> xCoord, List<Integer> yCoord) throws InvalidFileFormatException, IOException, WordNotFoundException {
         // check tiles + modifiers
         // by coords? then check against modifiers per tile
         // calc score
@@ -81,7 +81,7 @@ public class Scoring {
         return valid;
     }
 
-    private boolean isWordInDictionary(List<Tiles> tiles) throws IOException, EmptyFileException, WordNotFoundException {
+    private boolean isWordInDictionary(List<Tiles> tiles) throws IOException, InvalidFileFormatException, WordNotFoundException {
         WordChecker wordChecker = new WordChecker();
         DictionaryController dictionaryController = new DictionaryController("src/Scrabble/Dictionary/Dictionary.txt");
         dictionaryController.importDictionary();

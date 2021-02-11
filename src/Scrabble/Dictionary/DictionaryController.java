@@ -1,6 +1,6 @@
 package Scrabble.Dictionary;
 
-import Scrabble.Logic.GameObjects.Exceptions.EmptyFileException;
+import Scrabble.Logic.GameObjects.Exceptions.InvalidFileFormatException;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -24,7 +24,7 @@ public class DictionaryController {
         this.path = Path.of(path);
     }
 
-    public void importDictionary() throws IOException, EmptyFileException, NullPointerException {
+    public void importDictionary() throws IOException, InvalidFileFormatException, NullPointerException {
         if (path == null) {
             throw new NullPointerException("File path not set");
         } else {
@@ -35,7 +35,7 @@ public class DictionaryController {
             }
             // trim header fo the file
             if (dictionary.size() < headerLines) {
-                throw new EmptyFileException("file is not large enough to have header, please check file formatting");
+                throw new InvalidFileFormatException("file is not large enough to have header, please check file formatting");
             }
             else{
                 dictionary.subList(0, headerLines).clear();

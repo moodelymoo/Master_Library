@@ -20,6 +20,7 @@ public class Hand {
         }
     }
 
+
     public void removeTile(Tiles tile) {
         hand.remove(tile);
     }
@@ -30,6 +31,10 @@ public class Hand {
 
     public void setHand(List<Tiles> hand) {
         this.hand = hand;
+    }
+
+    public int getMaxHandSize() {
+        return MAX_HAND_SIZE;
     }
 
     @Override
