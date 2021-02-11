@@ -60,7 +60,7 @@ public class GameTests {
 
     @Test
     void scoreMultiplierBoardLayoutTest() {
-        //TODO imp testing of this, needs to have the word checking, the score calculations and the score tile
+        //TODO imp, testing of this, needs to have the word checking, the score calculations and the score tile
         // multiplier working to work
     }
 
@@ -77,7 +77,7 @@ public class GameTests {
 
     @Test
     void checkWordAgainstDictionaryPassTest() throws WordNotFoundException {
-        //TODO make this test against a list of words that are in the dictionary
+        //TODO imp, make this test against a list of words that are in the dictionary
         WordChecker wordChecker = new WordChecker();
         Assertions.assertTrue(wordChecker.check(dictionaryController.getDictionary(), "banana"));
     }
@@ -119,7 +119,8 @@ public class GameTests {
     @Test
     void dictionaryTypeSanitizationTest() {
         System.out.println("make sure that the dictionary file is single words separated by a newline");
-        //TODO imp, not super needed as of right now
+        //TODO imp, check the formatting of the dictionary file exception, should check for the correct header format
+        // as well as the correct work formatting. Not super needed as of right now
     }
 
     @Test

@@ -47,7 +47,6 @@ public class Player {
     public List<Tiles> play() {
         //TODO imp, actual tile play and waiting here, remove the dummy code that fakes
         // picking tiles and removing from the hand
-        System.out.println("Still a pass return of some dummy tiles");
         this.hand.getHand().remove(0);
         this.hand.getHand().remove(0);
         this.hand.getHand().remove(0);

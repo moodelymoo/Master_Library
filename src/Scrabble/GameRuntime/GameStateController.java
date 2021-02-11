@@ -55,7 +55,7 @@ public class GameStateController {
                 // p1 turn
                 // must play tiles
                 List<Tiles> play = players.get(i).play();
-                LOGGER.log(Level.SEVERE, MessageFormat.format("word size: {0}, word: {1}", play.size(), Arrays.toString(play.toArray())));
+                LOGGER.log(Level.FINE, MessageFormat.format("word size: {0}, word: {1}", play.size(), Arrays.toString(play.toArray())));
                 awaitPlay();
 
                 // p2 can challenge
@@ -66,10 +66,10 @@ public class GameStateController {
                     // pass the tile bag to the hand filler, needs to get back the tile bag
                     // once the tiles drawn are removed
 
-                    LOGGER.log(Level.SEVERE, MessageFormat.format("{0} tiles in bag before player {1}''s play",
+                    LOGGER.log(Level.FINER, MessageFormat.format("{0} tiles in bag before player {1}''s play",
                             tileBag.getBag().size(), i+1));
                     tileBag = players.get(i).fillHand(tileBag);
-                    LOGGER.log(Level.SEVERE, "{0} tiles in bag at the end of turn", tileBag.getBag().size());
+                    LOGGER.log(Level.FINER, "{0} tiles in bag at the end of turn", tileBag.getBag().size());
 
                 }
                 // else -> check word
@@ -91,7 +91,7 @@ public class GameStateController {
                 }
 
                 //LOGGER.log(Level.SEVERE, MessageFormat.format("moving from player {0}''s turn to player {1}''s " +
-                //"turn", i + 1,i+2>players.size() ? i+1 <= players.size(): i+2, i+2 - players.size()));
+                //"turn", i + 1,i+2>players.size() ? i+1 <= players.size() : i+2, i+2 - players.size()));
 
                 //TODO make this work with more than 2 players/comment it out as its only logging
                 int p1;
@@ -148,6 +148,5 @@ public class GameStateController {
 
         players.get(0).fillHand(tileBag);
         players.get(1).fillHand(tileBag);
-        System.out.println(tileBag.size());
     }
 }
