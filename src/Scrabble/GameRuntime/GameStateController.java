@@ -6,11 +6,13 @@ import Scrabble.Logic.GameObjects.Exceptions.InvalidFileFormatException;
 import Scrabble.Logic.GameObjects.Exceptions.WordNotFoundException;
 import Scrabble.Logic.GameObjects.Player;
 import Scrabble.Logic.GameObjects.TileBag;
+import Scrabble.Logic.GameObjects.Tiles;
 import Scrabble.Logic.WordChecker;
 
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,6 +34,8 @@ public class GameStateController {
         } catch (IOException | InvalidFileFormatException e) {
             LOGGER.log(Level.SEVERE, e.toString(), e);
         }
+
+
         // setup
         // assume default setup worked as intended (add error checking and support for non-default params)
 
@@ -50,17 +54,23 @@ public class GameStateController {
 
                 // p1 turn
                 // must play tiles
-                players.get(i).play();
+                List<Tiles> play = players.get(i).play();
+                LOGGER.log(Level.SEVERE, MessageFormat.format("word size: {0}, word: {1}", play.size(), Arrays.toString(play.toArray())));
                 awaitPlay();
-                // p2 can challenge
 
+                // p2 can challenge
                 boolean challenge = awaitChallenge();
 
                 // if no challenge -> refill hand
                 if (!challenge) {
                     // pass the tile bag to the hand filler, needs to get back the tile bag
                     // once the tiles drawn are removed
+
+                    LOGGER.log(Level.SEVERE, MessageFormat.format("{0} tiles in bag before player {1}''s play",
+                            tileBag.getBag().size(), i+1));
                     tileBag = players.get(i).fillHand(tileBag);
+                    LOGGER.log(Level.SEVERE, "{0} tiles in bag at the end of turn", tileBag.getBag().size());
+
                 }
                 // else -> check word
                 else {
@@ -92,7 +102,7 @@ public class GameStateController {
                 } else {
                     p2 = i + 2 - players.size();
                 }
-                LOGGER.log(Level.SEVERE, MessageFormat.format("moving from player {0} to player {1}", p1, p2));
+                LOGGER.log(Level.FINER, MessageFormat.format("moving from player {0} to player {1}", p1, p2));
 
                 // go to turn start and increment player e.g. p1 -> p2 ect...
 
@@ -114,7 +124,7 @@ public class GameStateController {
 
     private void awaitPlay() {
         //TODO imp, create a waiting state for the game whilst the player is thinking, should break out when focused
-        // player makes a move and confirms it as final
+        // player makes a move and confirms it as final. Must only allow a play if the tiles required are in the hand
 
     }
 
@@ -138,5 +148,6 @@ public class GameStateController {
 
         players.get(0).fillHand(tileBag);
         players.get(1).fillHand(tileBag);
+        System.out.println(tileBag.size());
     }
 }

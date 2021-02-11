@@ -13,6 +13,7 @@ public class Player {
     public Player(String name) {
         this.name = name;
         this.score = 0;
+
     }
 
     public void addToScore(int score){
@@ -36,16 +37,21 @@ public class Player {
     }
 
     public TileBag fillHand(TileBag tileBag){
-        for (int i = 0; i < (getHand().getMaxHandSize()
-                - getHand().getHand().size()); i++){
-            getHand().addTile(tileBag.drawTile());
+        for (int i = this.hand.getHand().size(); i < this.hand.getMaxHandSize(); i++){
+            this.hand.addTile(tileBag.drawTile());
         }
         return tileBag;
     }
 
+
     public List<Tiles> play() {
-        //TODO imp actual tile play and waiting here
+        //TODO imp, actual tile play and waiting here, remove the dummy code that fakes
+        // picking tiles and removing from the hand
         System.out.println("Still a pass return of some dummy tiles");
+        this.hand.getHand().remove(0);
+        this.hand.getHand().remove(0);
+        this.hand.getHand().remove(0);
+
         return new ArrayList<>(Arrays.asList(Tiles.A, Tiles.T, Tiles.E));
     }
 }

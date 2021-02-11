@@ -8,7 +8,6 @@ public class TileBagTest {
     @Test
     void testNewBag() {
         TileBag tileBag = new TileBag();
-        tileBag.newBag();
         Assertions.assertEquals(100, tileBag.size());
     }
 
